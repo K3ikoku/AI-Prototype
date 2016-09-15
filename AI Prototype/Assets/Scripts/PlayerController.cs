@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
 
                 Physics.Raycast(m_ray, out m_hit);
 
-                Debug.DrawLine(Camera.main.transform.position, m_hit.point);
+
+                Debug.DrawLine(Camera.main.transform.position, m_hit.point, Color.red);
                 Debug.Log("Shot fired at: " + m_hit.point);
             }
         }
