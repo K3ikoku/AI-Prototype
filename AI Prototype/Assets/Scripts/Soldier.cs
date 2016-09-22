@@ -16,4 +16,6 @@ public class Soldier : Entity
     {
         base.Die();
     }
+
+    
 }

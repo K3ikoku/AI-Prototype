@@ -4,14 +4,25 @@ using System.Collections;
 public class Entity : MonoBehaviour {
 
     [SerializeField] private int m_health;
-    [SerializeField] private int speed;
+    [SerializeField] private float m_speed;
     [SerializeField] private Transform m_target;
 
     public int Health
     {
         get { return m_health; }
         set { m_health = value; }
+    }
 
+    public float Speed
+    {
+        get { return m_speed; }
+        set { m_speed = value; } 
+    }
+
+    public Transform Target
+    {
+        get { return m_target; }
+        set { m_target = value; }
     }
 
 
