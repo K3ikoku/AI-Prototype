@@ -6,6 +6,7 @@ public class Entity : MonoBehaviour {
     [SerializeField] private int m_health;
     [SerializeField] private float m_speed;
     [SerializeField] private Transform m_target;
+    [SerializeField] private Transform m_pos;
 
     public int Health
     {
@@ -23,6 +24,11 @@ public class Entity : MonoBehaviour {
     {
         get { return m_target; }
         set { m_target = value; }
+    }
+
+    public Transform Pos
+    {
+        get { return gameObject.transform; }
     }
 
 

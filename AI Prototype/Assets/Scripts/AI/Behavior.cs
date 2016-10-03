@@ -11,7 +11,7 @@ public enum Status
     RUNNING
 }
 
-public class Behavior : MonoBehaviour
+public class Behavior
 {
     [SerializeField] private Status m_status;
 
