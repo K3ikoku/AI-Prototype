@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveController : MonoBehaviour {
+public class MoveController : MonoBehaviour
+{
 
 	// Use this for initialization
 	void Start () {

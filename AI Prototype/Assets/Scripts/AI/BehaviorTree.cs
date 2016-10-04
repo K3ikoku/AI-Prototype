@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-class BehaviorTree : MonoBehaviour
+class BehaviorTree
 {
     //Timer that decides how often the tree is going to update
     [SerializeField] private float m_cooldown;
@@ -17,7 +17,7 @@ class BehaviorTree : MonoBehaviour
         m_tree = root;
     }
 
-    void Update()
+    protected void Update(Blackboard bb)
     {
         m_timer -= Time.deltaTime;
 
@@ -27,7 +27,7 @@ class BehaviorTree : MonoBehaviour
 
             if(m_tree != null)
             {
-                m_tree.Tick();
+                m_tree.Tick(bb);
             }
         }
     }

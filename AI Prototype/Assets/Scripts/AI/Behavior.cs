@@ -15,36 +15,36 @@ public class Behavior
 {
     [SerializeField] private Status m_status;
 
-    protected virtual Status Update()
+    protected virtual Status Update(Blackboard bb)
     {
         return Status.INVALID;
     }
 
-    protected virtual void OnInitialize()
+    protected virtual void OnInitialize(Blackboard bb)
     {
 
     }
 
-    protected virtual void OnTerminate(Status status)
+    protected virtual void OnTerminate(Status status, Blackboard bb)
     {
 
     }
 
-    public Status Tick()
+    public Status Tick(Blackboard bb)
     {
         //If the status has not been initialized yet initalize it
         if (m_status == Status.INVALID)
         {
-            this.OnInitialize();
+            this.OnInitialize(bb);
         }
 
         //Update the status
-        m_status = Update();
+        m_status = Update(bb);
 
         //If the status is no longer running terminate it
         if (m_status != Status.RUNNING)
         {
-            this.OnTerminate(m_status);
+            this.OnTerminate(m_status, bb);
         }
 
         return m_status;

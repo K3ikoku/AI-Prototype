@@ -6,12 +6,13 @@ public class Composite : Behavior
 {
     protected List<Behavior> m_children;
 
-    protected void Add(Behavior behavior)
+    public Behavior Add(Behavior behavior)
     {
         m_children.Add(behavior);
+        return behavior;
     }
 
-    protected void Remove(Behavior behavior)
+    public void Remove(Behavior behavior)
     {
         m_children.Remove(behavior);
     }

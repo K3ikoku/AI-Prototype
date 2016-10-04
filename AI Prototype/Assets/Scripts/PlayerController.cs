@@ -24,7 +24,10 @@ public class PlayerController : MonoBehaviour
                 RaycastHit m_hit;
                 Ray m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+                
                 Physics.Raycast(m_ray, out m_hit);
+
+                
 
 
                 Debug.DrawLine(Camera.main.transform.position, m_hit.point, Color.red);

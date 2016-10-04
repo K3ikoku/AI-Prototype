@@ -8,14 +8,14 @@ public class Selector : Composite
     protected Behavior m_currentChild;
     [SerializeField]
     private int i = 0;
-    protected new virtual void OnInitialize()
+    protected new virtual void OnInitialize(Blackboard bb)
     {
         m_currentChild = m_children[i];
     }
 
-    protected new virtual Status Update()
+    protected new virtual Status Update(Blackboard bb)
     {
-        Status s = m_currentChild.Tick();
+        Status s = m_currentChild.Tick(bb);
         Debug.Log(i);
 
         //Keep going until a child behavior is running
@@ -37,6 +37,8 @@ public class Selector : Composite
             {
                 return Status.FAILURE;
             }
+
+            return Status.RUNNING;
         }
     }
 }
