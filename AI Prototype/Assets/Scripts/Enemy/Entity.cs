@@ -17,10 +17,6 @@ public class Entity : MonoBehaviour
 	// Update is called once per frame
 	protected virtual void Update ()
     {
-	    if(m_bBoard.Target == null && m_bBoard.TargetPos != null)
-        {
-            m_bBoard.Target.position = m_bBoard.TargetPos;
-        }
 	}
 
 

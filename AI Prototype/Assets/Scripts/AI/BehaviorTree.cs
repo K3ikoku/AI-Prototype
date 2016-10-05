@@ -17,7 +17,7 @@ class BehaviorTree
         m_tree = root;
     }
 
-    protected void Update(Blackboard bb)
+    public void Update(Blackboard bb)
     {
         m_timer -= Time.deltaTime;
 

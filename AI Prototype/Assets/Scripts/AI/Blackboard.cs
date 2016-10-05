@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Pathfinding;
 
 public class Blackboard
 {
@@ -50,20 +51,37 @@ public class Blackboard
         set { m_stats.Target = value; }
     }
 
-    public Vector3 TargetPos
-    {
-        get { return m_stats.TargetPos; }
-        set { m_stats.TargetPos = value; }
-    }
-
     public Vector3 Pos
     {
         get { return m_stats.Pos; }
     }
 
+    public float MinSpotDistance
+    {
+        get { return m_stats.MinSpotDistance; }
+        set { m_stats.MinSpotDistance = value; }
+    }
+
+    public float MinAttackDistance
+    {
+        get { return m_stats.MinAttackDistance; }
+        set { m_stats.MinAttackDistance = value; }
+    }
+
     public Seeker Seeker
     {
         get { return m_stats.Seeker; }
-    }   
+    }
+    
+    public Path Path
+    {
+        get { return m_stats.Path; }
+        set { m_stats.Path = value; }
+    }
+
+    public CharacterController CharController
+    {
+        get { return m_stats.CharController; }
+    }
 
 }
