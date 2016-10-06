@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IsEnemyInRange : Behavior
+public class IsPlayerInRange : Behavior
 {
     protected override Status Update(Blackboard bb)
     {
-        if (bb.MinAttackDistance >= Vector3.Distance(bb.Pos, bb.Target.position))
+        if (bb.MaxAttackDistance >= Vector3.Distance(bb.Pos, bb.Player.transform.position))
         {
             return Status.SUCCESS;
         }

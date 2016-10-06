@@ -20,7 +20,6 @@ public class SetRandomLocation : Behavior
             if (!m_isPathing)
             {
                 m_status = Status.RUNNING;
-                bb.MoveSpeed = bb.RunSpeed;
                 
                 //Set the target location to a random place inside the game area
                 bb.Target.position = new Vector3((Random.Range(-32, 32)), 0, (Random.Range(-12, 12)));

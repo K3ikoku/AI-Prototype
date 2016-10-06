@@ -11,7 +11,7 @@ public class Blackboard
     {
         m_stats = stats;
     }
-
+    
     public int MaxHP
     {
         get { return m_stats.MaxHp; }
@@ -28,7 +28,7 @@ public class Blackboard
         get { return m_stats.Damage; }
         set { m_stats.Damage = value; }
     }
-
+    
     public float MoveSpeed
     {
         get { return m_stats.MoveSpeed; }
@@ -40,9 +40,55 @@ public class Blackboard
         get { return m_stats.RunSpeed; }
     }
 
+    public float StandardSpeed
+    {
+        get { return m_stats.StandardSpeed; }
+    }
+
     public float WalkSpeed
     {
         get { return m_stats.WalkSpeed; }
+    }
+
+    public float MaxSpotDistance
+    {
+        get { return m_stats.MaxSpotDistance; }
+        set { m_stats.MaxSpotDistance = value; }
+    }
+
+    public float MaxAttackDistance
+    {
+        get { return m_stats.MaxAttackDistance; }
+        set { m_stats.MaxAttackDistance = value; }
+    }
+
+    public float AttackTimer
+    {
+        get { return m_stats.AttackTimer; }
+        set { m_stats.AttackTimer = value; }
+    }
+
+    public float IdleTimer
+    {
+        get { return m_stats.IdleTimer; }
+        set { m_stats.IdleTimer = value; }
+    }
+
+    public float IdleCD
+    {
+        get { return m_stats.IdleCD; }
+        set { m_stats.IdleCD = value; }
+    }
+
+    public float FleeHealthThreshold
+    {
+        get { return m_stats.FleeHealthThreshold; }
+    }
+
+    public bool CanWalk
+    {
+        get { return m_stats.CanWalk; }
+        set { m_stats.CanWalk = value; }
     }
 
     public Transform Target
@@ -56,16 +102,10 @@ public class Blackboard
         get { return m_stats.Pos; }
     }
 
-    public float MinSpotDistance
+    public Quaternion Rotation
     {
-        get { return m_stats.MinSpotDistance; }
-        set { m_stats.MinSpotDistance = value; }
-    }
-
-    public float MinAttackDistance
-    {
-        get { return m_stats.MinAttackDistance; }
-        set { m_stats.MinAttackDistance = value; }
+        get { return m_stats.Rotation; }
+        set { m_stats.Rotation = value; }
     }
 
     public Seeker Seeker
@@ -82,6 +122,16 @@ public class Blackboard
     public CharacterController CharController
     {
         get { return m_stats.CharController; }
+    }
+
+    public Shoot Shoot
+    {
+        get { return m_stats.Shoot; }
+    }
+
+    public GameObject Player
+    {
+        get { return m_stats.Player; }
     }
 
 }

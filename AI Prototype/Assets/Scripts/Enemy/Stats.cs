@@ -11,16 +11,25 @@ public class Stats : MonoBehaviour
 
     [SerializeField] private float m_moveSpeed;
     [SerializeField] private float m_runSpeed;
+    [SerializeField] private float m_standardSpeed;
     [SerializeField] private float m_walkSpeed;
-    [SerializeField] private float m_minSpotDistance;
-    [SerializeField] private float m_minAttackDistance;
+    [SerializeField] private float m_maxSpotDistance;
+    [SerializeField] private float m_maxAttackDistance;
+    [SerializeField] private float m_attackTimer;
+    [SerializeField] private float m_idleTimer;
+    [SerializeField] private float m_idleCD;
+    [SerializeField] private float m_fleeHealthThreshhold;
+
+    [SerializeField] private bool m_canWalk;
 
     [SerializeField] private Transform m_target;
     [SerializeField] private Vector3 m_pos;
+    [SerializeField] private Quaternion m_rot;
 
     [SerializeField] private Seeker m_seeker;
     [SerializeField] private Path m_path;
     [SerializeField] private CharacterController m_controller;
+    [SerializeField] private GameObject m_player;
 
 
     void Awake()
@@ -37,6 +46,12 @@ public class Stats : MonoBehaviour
         {
             Debug.Log("Missing character controller");
         }
+        m_player = GameObject.FindGameObjectWithTag("Player");
+        if(m_player = null)
+        {
+            Debug.Log("Missing bullet");
+        }
+        
     }
 
     public int MaxHp
@@ -68,9 +83,54 @@ public class Stats : MonoBehaviour
         get { return m_runSpeed; }
     }
 
+    public float StandardSpeed
+    {
+        get { return m_standardSpeed; }
+    }
+
     public float WalkSpeed
     {
         get { return m_walkSpeed; }
+    }
+    
+    public float MaxSpotDistance
+    {
+        get { return m_maxSpotDistance; }
+        set { m_maxSpotDistance = value; }
+    }
+
+    public float MaxAttackDistance
+    {
+        get { return m_maxAttackDistance; }
+        set { m_maxAttackDistance = value; }
+    }
+
+    public float IdleTimer
+    {
+        get { return m_idleTimer; }
+        set { m_idleTimer = value; }
+    }
+
+    public float IdleCD
+    {
+        get { return m_idleCD; }
+        set { m_idleCD = value; }
+    }
+    public float AttackTimer
+    {
+        get { return m_attackTimer; }
+        set { m_attackTimer = value; }
+    }
+
+    public float FleeHealthThreshold
+    {
+        get { return m_fleeHealthThreshhold; }
+    }
+
+    public bool CanWalk
+    {
+        get { return m_canWalk; }
+        set { m_canWalk = value; }
     }
 
     public Transform Target
@@ -84,16 +144,10 @@ public class Stats : MonoBehaviour
         get { return transform.position; }
     }
 
-    public float MinSpotDistance
+    public Quaternion Rotation
     {
-        get { return m_minSpotDistance; }
-        set { m_minSpotDistance = value; }
-    }
-    
-    public float MinAttackDistance
-    {
-        get { return m_minAttackDistance; }
-        set { m_minAttackDistance = value; }
+        get { return transform.rotation; }
+        set { transform.rotation = value; }
     }
 
     public Seeker Seeker
@@ -111,4 +165,15 @@ public class Stats : MonoBehaviour
     {
         get { return m_controller; }
     }
+
+    public Shoot Shoot
+    {
+        get { return GetComponent<Shoot>(); }
+    }
+
+    public GameObject Player
+    {
+        get { return m_player; }
+    }
+
 }

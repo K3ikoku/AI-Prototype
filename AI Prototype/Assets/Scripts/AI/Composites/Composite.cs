@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Composite : Behavior
 {
-    protected List<Behavior> m_children;
+    protected List<Behavior> m_children = new List<Behavior>();
 
     public Behavior Add(Behavior behavior)
     {

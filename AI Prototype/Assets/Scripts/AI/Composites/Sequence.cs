@@ -21,6 +21,7 @@ public class Sequence : Composite
             Status s = m_currentChild.Tick(bb);
             if (s != Status.SUCCESS)
             {
+                Debug.Log("Checking children of sequence" + i);
                 return s;
             }
 
