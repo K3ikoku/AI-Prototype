@@ -5,6 +5,15 @@ using Pathfinding;
 public class Stats : MonoBehaviour
 {
 
+    public enum TargetType
+    {
+        UNDEFINED, 
+        RANDOM,
+        PLAYER
+    }
+
+    [SerializeField] private TargetType m_currentTargetType = TargetType.UNDEFINED;
+
     [SerializeField] private int m_maxHP;
     [SerializeField] private int m_currentHealth;
     [SerializeField] private int m_damage;
@@ -60,6 +69,12 @@ public class Stats : MonoBehaviour
         
     }
 
+    public TargetType CurrentTargetType
+    {
+        get { return m_currentTargetType; }
+        set { m_currentTargetType = value; }
+    }
+    
     public int MaxHp
     {
         get { return m_maxHP; }

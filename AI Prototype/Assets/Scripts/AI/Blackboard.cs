@@ -6,10 +6,15 @@ public class Blackboard
 {
     private Stats m_stats;
 
-
     public void SetStats(Stats stats)
     {
         m_stats = stats;
+    }
+
+    public Stats.TargetType CurrentTargetType
+    {
+        get { return m_stats.CurrentTargetType; }
+        set { m_stats.CurrentTargetType = value; }
     }
     
     public int MaxHP

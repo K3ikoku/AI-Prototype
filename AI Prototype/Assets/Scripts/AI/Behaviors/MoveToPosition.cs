@@ -13,6 +13,7 @@ public class MoveToPosition : Behavior
             if (Vector3.Distance(bb.Pos, bb.Path.vectorPath[0]) < 3)
             {
                 bb.Path.vectorPath.RemoveAt(0);
+                return Status.SUCCESS;
             }
 
             
@@ -20,6 +21,7 @@ public class MoveToPosition : Behavior
             if (0 == bb.Path.vectorPath.Count)
             {
                 bb.Path = null;
+                bb.CurrentTargetType = Stats.TargetType.UNDEFINED;
                 return Status.SUCCESS;
             }
 
@@ -32,6 +34,7 @@ public class MoveToPosition : Behavior
                 Rigidbody rb =  bb.Rigidbody;
                 rb.MovePosition(bb.Pos + m_dir);
                 bb.Rotation = Quaternion.LookRotation(m_dir);
+                return Status.RUNNING;
             }
         }
 
@@ -40,8 +43,6 @@ public class MoveToPosition : Behavior
         {
             return Status.FAILURE;
         }
-
-        return Status.RUNNING;
     }
 }
 

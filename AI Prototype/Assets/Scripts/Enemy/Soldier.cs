@@ -9,8 +9,8 @@ public class Soldier : Entity
     private Composite m_flee;
     private Composite m_attack;
     private Composite m_moveToPlayer;
-    private Composite m_walk;
-    private Composite m_idle;
+    //private Composite m_walk;
+    //private Composite m_idle;
 
     //TODO: Remove all the uneccesary nodes from the behavior tree
     protected override void Start()
@@ -38,6 +38,7 @@ public class Soldier : Entity
         m_moveToPlayer.Add(new TargetPlayer());
         m_moveToPlayer.Add(new MoveToPosition());
 
+        /*
         m_walk = (Composite)m_root.Add(new Sequence());
         m_walk.Add(new StandOrWalk());
         m_walk.Add(new SetRandomLocation());
@@ -45,7 +46,7 @@ public class Soldier : Entity
 
         m_idle = (Composite)m_root.Add(new Sequence());
         m_idle.Add(new Idle());
-
+        */
     }
 
     protected override void Update()
