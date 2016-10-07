@@ -91,7 +91,7 @@ public class Blackboard
         set { m_stats.CanWalk = value; }
     }
 
-    public Transform Target
+    public Vector3 Target
     {
         get { return m_stats.Target; }
         set { m_stats.Target = value; }
@@ -132,6 +132,11 @@ public class Blackboard
     public GameObject Player
     {
         get { return m_stats.Player; }
+    }
+
+    public Rigidbody Rigidbody
+    {
+        get { return m_stats.Rigidbody; }
     }
 
 }

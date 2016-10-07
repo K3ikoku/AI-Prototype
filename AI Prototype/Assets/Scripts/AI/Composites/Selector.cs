@@ -4,41 +4,27 @@ using System.Collections;
 public class Selector : Composite
 {
 
-    [SerializeField]
-    protected Behavior m_currentChild;
-    [SerializeField]
     private int i = 0;
-    protected new virtual void OnInitialize(Blackboard bb)
-    {
-        m_currentChild = m_children[i];
-    }
 
-    protected new virtual Status Update(Blackboard bb)
+    protected override Status Update(Blackboard bb)
     {
-        Status s = m_currentChild.Tick(bb);
-        Debug.Log(i);
-
-        //Keep going until a child behavior is running
-        while (true)
+        while(i < m_children.Count)
         {
-            //If the child succeeds or keeps running do the same
-            if (s != Status.FAILURE)
+            Status s = m_children[i].Tick(bb);
+            if(s == Status.SUCCESS)
+            {
+                i = 0;
+                return s;
+            }
+            if (s == Status.RUNNING)
             {
                 return s;
             }
 
-
             i++;
-            Debug.Log(i);
-
-
-            //Hit the end of the array
-            if (m_currentChild == m_children[m_children.Count - 1])
-            {
-                return Status.FAILURE;
-            }
-
-            return Status.RUNNING;
         }
+
+        i = 0;
+        return Status.FAILURE;
     }
 }

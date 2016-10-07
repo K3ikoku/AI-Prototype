@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Citizen : Entity
+public class Civilian : Entity
 {
-    [SerializeField] private int m_health;
-    [SerializeField] private int m_speed;
-    [SerializeField] private Transform m_target;
+    //TODO: implement behavior tree 
 
     public override void TakeDamage(int m_damage)
     {

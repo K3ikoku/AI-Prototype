@@ -11,27 +11,21 @@ public class TargetPlayer : Behavior
 
     protected override Status Update(Blackboard bb)
     {
+        //Debug.Log("Setting player to target");
+        
 
-        if (bb.Target != null)
+        if (!m_isPathing && !m_foundPath)
         {
+            m_status = Status.RUNNING;
 
-            if (!m_isPathing)
-            {
-                m_status = Status.RUNNING;
+            //Set the target location to the players position
+            bb.Target = bb.Player.transform.position;
 
-                //Set the target location to the players position
-                bb.Target = bb.Player.transform;
+            bb.Seeker.StartPath(bb.Pos, bb.Target, OnPathComplete);
 
-                bb.Seeker.StartPath(bb.Pos, bb.Target.position, OnPathComplete);
-
-                m_isPathing = true;
-            }
-
+            m_isPathing = true;
         }
-        else
-        {
-            m_status = Status.FAILURE;
-        }
+
 
 
         if (m_foundPath)
@@ -40,7 +34,6 @@ public class TargetPlayer : Behavior
             bb.Path = m_path;
             m_path = null;
         }
-
 
         return m_status;
     }

@@ -7,31 +7,31 @@ public class Sequence : Composite
     protected Behavior m_currentChild;
     private int i = 0;
 
-    protected new virtual void OnInitialize(Blackboard bb)
+    protected override void OnInitialize(Blackboard bb)
     {
         m_currentChild = m_children[i];
     }
 
-    protected new virtual Status Update(Blackboard bb)
+    protected override Status Update(Blackboard bb)
     {
-
         //Keep going through the list until a child behavior is running
-        while (true)
+        while (i < m_children.Count)
         {
-            Status s = m_currentChild.Tick(bb);
-            if (s != Status.SUCCESS)
+            Status s = m_children[i].Tick(bb);
+            if (s == Status.FAILURE)
             {
-                Debug.Log("Checking children of sequence" + i);
+                i = 0;
+                return s;
+            }
+            if (s == Status.RUNNING)
+            {
                 return s;
             }
 
             i++;
-
-            //Hit the end of the list
-            if (m_children[i] == m_children[m_children.Count - 1])
-            {
-                return Status.SUCCESS;
-            }
         }
+
+        i = 0;
+        return Status.SUCCESS;
     }
 }

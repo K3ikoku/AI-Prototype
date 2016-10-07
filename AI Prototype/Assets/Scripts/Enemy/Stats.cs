@@ -22,7 +22,7 @@ public class Stats : MonoBehaviour
 
     [SerializeField] private bool m_canWalk;
 
-    [SerializeField] private Transform m_target;
+    [SerializeField] private Vector3 m_target;
     [SerializeField] private Vector3 m_pos;
     [SerializeField] private Quaternion m_rot;
 
@@ -30,6 +30,7 @@ public class Stats : MonoBehaviour
     [SerializeField] private Path m_path;
     [SerializeField] private CharacterController m_controller;
     [SerializeField] private GameObject m_player;
+    [SerializeField] private Rigidbody m_rigidBody;
 
 
     void Awake()
@@ -47,9 +48,14 @@ public class Stats : MonoBehaviour
             Debug.Log("Missing character controller");
         }
         m_player = GameObject.FindGameObjectWithTag("Player");
-        if(m_player = null)
+        if(m_player == null)
         {
-            Debug.Log("Missing bullet");
+            Debug.Log("Missing player");
+        }
+        m_rigidBody = GetComponent<Rigidbody>();
+        if(m_rigidBody == null)
+        {
+            Debug.Log("Missing Rigidbody");
         }
         
     }
@@ -133,7 +139,7 @@ public class Stats : MonoBehaviour
         set { m_canWalk = value; }
     }
 
-    public Transform Target
+    public Vector3 Target
     {
         get { return m_target; }
         set { m_target = value; }
@@ -174,6 +180,11 @@ public class Stats : MonoBehaviour
     public GameObject Player
     {
         get { return m_player; }
+    }
+
+    public Rigidbody Rigidbody
+    {
+        get { return m_rigidBody; }
     }
 
 }

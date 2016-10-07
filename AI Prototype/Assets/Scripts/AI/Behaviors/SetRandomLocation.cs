@@ -13,28 +13,19 @@ public class SetRandomLocation : Behavior
 
     protected override Status Update(Blackboard bb)
     {
-        
-        if(bb.Target != null)
+        //Debug.Log("Setting new random location");
+                    
+        if (!m_isPathing && !m_foundPath)
         {
-            
-            if (!m_isPathing)
-            {
-                m_status = Status.RUNNING;
+            m_status = Status.RUNNING;
                 
-                //Set the target location to a random place inside the game area
-                bb.Target.position = new Vector3((Random.Range(-32, 32)), 0, (Random.Range(-12, 12)));
+            //Set the target location to a random place inside the game area
+            bb.Target = new Vector3((Random.Range(-32, 32)), 0, (Random.Range(-12, 12)));
 
-                bb.Seeker.StartPath(bb.Pos, bb.Target.position, OnPathComplete);
+            bb.Seeker.StartPath(bb.Pos, bb.Target, OnPathComplete);
 
-                m_isPathing = true;
-            }
-
+            m_isPathing = true;
         }
-        else
-        {
-            m_status = Status.FAILURE;
-        }
-
 
         if(m_foundPath)
         {

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Composite : Behavior
+public abstract class Composite : Behavior
 {
     protected List<Behavior> m_children = new List<Behavior>();
 

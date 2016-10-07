@@ -3,9 +3,6 @@ using System.Collections;
 
 public class Soldier : Entity
 {
-    [SerializeField] private int m_speed;
-    [SerializeField] private Transform m_target;
-
     private BehaviorTree m_bt;
     private Blackboard m_bb;
     private Composite m_root;
@@ -15,7 +12,7 @@ public class Soldier : Entity
     private Composite m_walk;
     private Composite m_idle;
 
-
+    //TODO: Remove all the uneccesary nodes from the behavior tree
     protected override void Start()
     {
         base.Start();
@@ -59,16 +56,19 @@ public class Soldier : Entity
 
 
         m_bt.Update(m_bb);
+
+
     }
 
-    public override void TakeDamage(int m_damage)
+    public override void TakeDamage(int damage)
     {
-        base.TakeDamage(m_damage);
+        base.TakeDamage(damage);
     }
 
     protected override void Die()
     {
         base.Die();
+        Debug.Log("Died the dead");
     }
 
     

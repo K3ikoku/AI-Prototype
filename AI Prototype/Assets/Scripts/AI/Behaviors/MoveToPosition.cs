@@ -6,6 +6,7 @@ public class MoveToPosition : Behavior
 {
     protected override Status Update(Blackboard bb)
     {
+        //Debug.Log("Checking in move to position");
         if (bb.Path != null)
         {
             //Check if the character is close enough to the next waypoint and remove if so
@@ -26,8 +27,11 @@ public class MoveToPosition : Behavior
             else
             {
                 Vector3 m_dir = (bb.Path.vectorPath[0] - bb.Pos).normalized;
+                m_dir.y = 0;
                 m_dir *= bb.MoveSpeed * Time.deltaTime;
-                bb.CharController.SimpleMove(m_dir);
+                Rigidbody rb =  bb.Rigidbody;
+                rb.MovePosition(bb.Pos + m_dir);
+                bb.Rotation = Quaternion.LookRotation(m_dir);
             }
         }
 

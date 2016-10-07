@@ -11,14 +11,11 @@ public enum Status
     RUNNING
 }
 
-public class Behavior
+public abstract class Behavior
 {
     [SerializeField] private Status m_status;
 
-    protected virtual Status Update(Blackboard bb)
-    {
-        return Status.INVALID;
-    }
+    protected abstract Status Update(Blackboard bb);
 
     protected virtual void OnInitialize(Blackboard bb)
     {

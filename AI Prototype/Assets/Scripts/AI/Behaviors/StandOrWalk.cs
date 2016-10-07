@@ -6,6 +6,7 @@ public class StandOrWalk : Behavior
 {
     protected override Status Update(Blackboard bb)
     {
+        //Debug.Log("Checking if walk or stand");
         if (bb.CanWalk)
         {
             int i = Random.Range(0, 100);

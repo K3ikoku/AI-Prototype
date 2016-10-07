@@ -5,6 +5,7 @@ public class Idle : Behavior
 {
     protected override Status Update(Blackboard bb)
     {
+        //Debug.Log("Idle");
         if(bb.IdleCD != 0)
         {
             bb.CanWalk = false;

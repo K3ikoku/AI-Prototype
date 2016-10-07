@@ -20,6 +20,8 @@ public class BulletScript : Entity
     protected override void Die()
     {
         base.Die();
+
+        Debug.Log("Bullet died");
     }
 
     void OnCollisionEnter(Collision collision)

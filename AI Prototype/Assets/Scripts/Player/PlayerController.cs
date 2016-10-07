@@ -3,8 +3,10 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float m_laserTimer;
-    [SerializeField] float m_laserCD;
+    [SerializeField] private float m_laserTimer;
+    [SerializeField] private float m_laserCD;
+    [SerializeField] private int m_damage;
+    private GameObject m_objHit;
 
 	// Use this for initialization
 	void Start ()
@@ -27,11 +29,17 @@ public class PlayerController : MonoBehaviour
                 
                 Physics.Raycast(m_ray, out m_hit);
 
-                
 
+                m_objHit = m_hit.transform.gameObject;
 
                 Debug.DrawLine(Camera.main.transform.position, m_hit.point, Color.red);
                 Debug.Log("Shot fired at: " + m_hit.point);
+
+
+                if(m_objHit.tag == "Enemy")
+                {
+                    m_objHit.GetComponent<Entity>().TakeDamage(m_damage);
+                }
             }
         }
         else

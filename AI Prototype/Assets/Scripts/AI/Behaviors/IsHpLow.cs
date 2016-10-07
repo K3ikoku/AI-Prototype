@@ -9,7 +9,7 @@ class IsHpLow : Behavior
     
     protected override Status Update(Blackboard bb)
     {
-        Debug.Log("Checking IsHpLow");   
+        //Debug.Log("Checkin is hp low");
         if (bb.Health <= (bb.MaxHP * bb.FleeHealthThreshold))
         {
             bb.MoveSpeed = bb.RunSpeed;
