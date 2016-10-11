@@ -5,8 +5,9 @@ public class IsPlayerInRange : Behavior
 {
     protected override Status Update(Blackboard bb)
     {
+        //Debug.Log("Inside PlayerInRange");
         //Debug.Log("Checking if player is in range");
-        if(bb.Player == null)
+        if (bb.Player == null)
         {
             return Status.FAILURE;
         }

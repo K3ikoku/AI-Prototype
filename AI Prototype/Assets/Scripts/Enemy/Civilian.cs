@@ -51,6 +51,7 @@ public class Civilian : Entity
     {
         base.Update();
 
+        m_bt.Update(m_bb);
 
     }
 

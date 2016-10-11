@@ -5,6 +5,7 @@ public class IsPlayerInSight : Behavior
 {
     protected override Status Update(Blackboard bb)
     {
+        //Debug.Log("Inside PlayerInSight");
         //Debug.Log("Checking if player is in sight");
         if (bb.Player == null)
         {

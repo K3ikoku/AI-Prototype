@@ -11,6 +11,7 @@ public class Stats : MonoBehaviour
         RANDOM,
         PLAYER
     }
+    
 
     [SerializeField] private TargetType m_currentTargetType = TargetType.UNDEFINED;
 
@@ -29,12 +30,11 @@ public class Stats : MonoBehaviour
     [SerializeField] private float m_idleCD;
     [SerializeField] private float m_fleeHealthThreshhold;
 
-    [SerializeField] private bool m_canWalk;
+    [SerializeField] private bool m_canWalk = true;
+    [SerializeField] private bool m_isIdling = false;
+    [SerializeField] private bool m_canIdle = true;
 
     [SerializeField] private Vector3 m_target;
-    [SerializeField] private Vector3 m_pos;
-    [SerializeField] private Quaternion m_rot;
-
     [SerializeField] private Seeker m_seeker;
     [SerializeField] private Path m_path;
     [SerializeField] private CharacterController m_controller;
@@ -44,29 +44,31 @@ public class Stats : MonoBehaviour
 
     void Awake()
     {
-        Health = MaxHp;
-        m_seeker = GetComponent<Seeker>();
-        if(Seeker == null)
+        if (gameObject.tag != "Player")
         {
-            Debug.Log("Missing seeker");
-        }
+            Health = MaxHp;
+            m_seeker = GetComponent<Seeker>();
+            if (Seeker == null)
+            {
+                Debug.Log("Missing seeker");
+            }
 
-        m_controller = GetComponent<CharacterController>();
-        if(CharController == null)
-        {
-            Debug.Log("Missing character controller");
+            m_controller = GetComponent<CharacterController>();
+            if (CharController == null)
+            {
+                Debug.Log("Missing character controller");
+            }
+            m_player = GameObject.FindGameObjectWithTag("Player");
+            if (m_player == null)
+            {
+                Debug.Log("Missing player");
+            }
+            m_rigidBody = GetComponent<Rigidbody>();
+            if (m_rigidBody == null)
+            {
+                Debug.Log("Missing Rigidbody");
+            }
         }
-        m_player = GameObject.FindGameObjectWithTag("Player");
-        if(m_player == null)
-        {
-            Debug.Log("Missing player");
-        }
-        m_rigidBody = GetComponent<Rigidbody>();
-        if(m_rigidBody == null)
-        {
-            Debug.Log("Missing Rigidbody");
-        }
-        
     }
 
     public TargetType CurrentTargetType
@@ -154,6 +156,17 @@ public class Stats : MonoBehaviour
         set { m_canWalk = value; }
     }
 
+    public bool CanIdle
+    {
+        get { return m_canIdle; }
+        set { m_canIdle = value; }
+    }
+
+    public bool IsIdling
+    {
+        get { return m_isIdling; }
+        set { m_isIdling = value; }
+    }
     public Vector3 Target
     {
         get { return m_target; }

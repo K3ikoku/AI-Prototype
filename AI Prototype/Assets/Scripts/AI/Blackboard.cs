@@ -96,6 +96,18 @@ public class Blackboard
         set { m_stats.CanWalk = value; }
     }
 
+    public bool CanIdle
+    {
+        get { return m_stats.CanIdle; }
+        set { m_stats.CanIdle = value; }
+    }
+
+    public bool IsIdling
+    {
+        get { return m_stats.IsIdling; }
+        set { m_stats.IsIdling = value; }
+    }
+
     public Vector3 Target
     {
         get { return m_stats.Target; }

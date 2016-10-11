@@ -5,12 +5,12 @@ using System.Collections.Generic;
 class BehaviorTree
 {
     //Timer that decides how often the tree is going to update
-    [SerializeField] private float m_cooldown;
+    private float m_cooldown;
 
     //Roof of the tree
-    [SerializeField] private Behavior m_tree;
+    private Behavior m_tree;
 
-    [SerializeField] private float m_timer;
+    private float m_timer;
 
     public void SetRoot(Behavior root)
     {

@@ -11,6 +11,7 @@ public class TargetPlayer : Behavior
 
     protected override Status Update(Blackboard bb)
     {
+        //Debug.Log("Inside targetplayer");
         //Debug.Log("Setting player to target");
 
         if (bb.CurrentTargetType != Stats.TargetType.PLAYER)
@@ -19,7 +20,6 @@ public class TargetPlayer : Behavior
             {
                 m_status = Status.RUNNING;
 
-                bb.CurrentTargetType = Stats.TargetType.PLAYER;
 
                 //Set the target location to the players position
                 bb.Target = bb.Player.transform.position;
@@ -36,6 +36,10 @@ public class TargetPlayer : Behavior
                 m_foundPath = false;
                 bb.Path = m_path;
                 m_path = null;
+                m_status = Status.SUCCESS;
+                bb.CurrentTargetType = Stats.TargetType.PLAYER;
+
+
             }
         }
 
@@ -55,7 +59,6 @@ public class TargetPlayer : Behavior
         {
             m_foundPath = true;
             m_path = p;
-            m_status = Status.SUCCESS;
         }
         else
         {
