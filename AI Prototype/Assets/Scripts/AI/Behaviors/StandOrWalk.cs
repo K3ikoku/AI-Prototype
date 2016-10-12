@@ -13,10 +13,10 @@ public class StandOrWalk : Behavior
             if (bb.CanWalk)
             {
                 //Debug.Log("Inside standorwalk");
-                //int i = Random.Range(0, 100);
+                int i = Random.Range(0, 100);
                 //Debug.Log(i);
-                int i = 100;
-                if (i == 100)
+                //int i = 100;
+                if (i >= 50)
                 {
                     bb.CanWalk = false;
                     bb.CanIdle = false;
