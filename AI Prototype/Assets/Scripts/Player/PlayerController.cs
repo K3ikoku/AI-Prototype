@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
 
                 m_objHit = m_hit.transform.gameObject;
+                //TODO: Implement Aoe effect.
 
                 Debug.DrawLine(Camera.main.transform.position, m_hit.point, Color.red);
                 Debug.Log("Shot fired at: " + m_hit.point);
